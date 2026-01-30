@@ -1,0 +1,4 @@
+deleting files from R studio homes deletes it from pC
+
+To commit chnages: go to git pane, clikc commit, write in an appropriate commit messagein the box, and click commit
+
