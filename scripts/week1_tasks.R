@@ -212,6 +212,61 @@ miss_var_summary(mosquito_egg_raw)
 
 #=============================================================================================================================================================
 
+#Chapter 6 - Dates 
+
+#There are multiple ways to write same date
+library(lubridate)
+#using this package, we can reformat dates written in multiple different ways to YYYY-MM-DD
+
+#Reformat
+date("2017-10-11T14:02:00")
+dmy("11 October 2020")
+mdy("10/11/2020")
+
+df <- tibble(
+  date = c("X2020.01.22",
+           "X2020.01.22",
+           "X2020.01.22",
+           "X2020.01.22")
+)
+
+df |> 
+  mutate(
+    date = as_date(date, format = "X%Y.%m.%d")
+  )
+
+#Extract
+#to extract certain elementsof a longer date-time value for summarising, filtering, or plotting data
+year("2017-11-28T14:02:00")
+month("2017-11-28T14:02:00")
+week("2017-11-28T14:02:00")
+day("2017-11-28T14:02:00")
+
+#Excel date format 
+#Since excel stores dates as serial numbers, dates are often imported into R as the numberic.
+#Use janitor package: janitor::excel_numeric_to_date() 
+library(janitor)
+excel_numeric_to_date(42370)
+
+#For the date_egg variable - use DD-MM-YYYY
+penguins_clean_names <- penguins_clean_names |>
+  mutate(date_egg = lubridate::dmy(date_egg))
+
+#Calculations wth dates 
+penguins_clean_names |> 
+  summarise(min_date=min(date_egg),
+            max_date=max(date_egg))
+#Extract and make new columns from our date column - such as a simple column of the year when each observation was made:
+penguins_clean_names <- penguins_clean_names |> 
+  mutate(year = lubridate::year(date_egg))
+
+#Filter dates
+#Filter datasets to include or exclude data from certain dates or date ranges
+penguins_clean_names |>
+  filter(date_egg >= ymd("2008-01-01"))
+
+#=============================================================================================================================================================
+
 
 
 

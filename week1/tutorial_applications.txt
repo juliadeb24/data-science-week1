@@ -51,7 +51,7 @@ CONNECTING TO MY DATA:
 TUTORIAL 2: CHECKING DATES - APPLICATION CHECKLIST
 ================================================================================
 
-[ ] I completed the tutorial exercises
+[/] I completed the tutorial exercises
 
 
 
@@ -61,7 +61,7 @@ CONNECTING TO MY DATA:
 1. Did I identify any date-related questions in my Week 1 questions list?
 
    [ ] YES - Question #(s): ___________
-   [ ] NO - Skip to question 5
+   [/] NO - Skip to question 5
 
 
 2. If YES, which technique from this tutorial could help address my question?
@@ -105,7 +105,7 @@ CONNECTING TO MY DATA:
 
    Why not?
    [ ] I don't have any date variables
-   [ ] My dates are already in proper format
+   [/] My dates are already in proper format
    [ ] My date issues are different from what this tutorial covers
    [ ] Other: ___________
 
