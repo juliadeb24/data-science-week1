@@ -154,7 +154,7 @@ Copy this into week1/tutorial_applications.txt and complete it:
 TUTORIAL 4: CHECKING DUPLICATES - APPLICATION CHECKLIST
 ================================================================================
 
-[ ] I completed the tutorial exercises
+[/] I completed the tutorial exercises
 
 
 CONNECTING TO MY DATA:
@@ -163,7 +163,7 @@ CONNECTING TO MY DATA:
 1. Did I identify any duplicate-related questions in my Week 1 questions list?
 
    [ ] YES - Question #(s): ___________
-   [ ] NO - But I'll check anyway
+   [/] NO - But I'll check anyway
 
 
 3. Think about consequences:
@@ -172,9 +172,9 @@ CONNECTING TO MY DATA:
    
    
    If duplicates are actually repeated measures, what should I do instead?
-   [ ] Keep them - they're legitimate observations
-   [ ] Flag them for later analysis that accounts for non-independence
-   [ ] Other: ___________
+   [/] Keep them - they're legitimate observations
+   [/] Flag them for later analysis that accounts for non-independence
+   [ ] Other: Both - i would keep them in but also flag them in some way to later check 
    
    
 ================================================================================

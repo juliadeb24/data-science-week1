@@ -112,5 +112,50 @@ penguins_clean_names <-
   ) |> 
   mutate(full_latin_name = str_remove_all(full_latin_name, "[\\(\\)]"))
 
-  
+#=============================================================================================================================================================
+
+#Chapter 4 - Duplicates
+
+#Check using dplyr 
+penguins_clean_names |> 
+  filter(duplicated(across(everything())))
+  sum() 
+#Check using janitor
+penguins_clean_names |> 
+  get_dupes()
+
+#Making a worksapce to practisse working with duplicates since our data set is duplicate free
+penguins_demo <- penguins_clean_names |> 
+  slice(1:50) |> 
+  bind_rows(slice(penguins_clean_names, c(1,5,10,15,30)))
+
+#Rerun duplicates check with the new dataset 
+penguins_demo |> 
+  filter(duplicated(across(everything())))
+sum() 
+#output still 0 - no duplicates 
+
+# Keep only unduplicated data with !
+penguins_demo |> 
+  filter(!duplicated(across(everything())))
+#or using distinct 
+penguins_demo |> 
+  distinct()
+
+#Counting unique entries 
+#Using the n_distinct() function from dplyr - count number of distinct values in an R data frame:
+penguins_clean_names |> 
+  summarise(
+    n = n(),
+    n_distinct(individual_id)
+  )
+
+
+
+
+
+
+
+
+
 
