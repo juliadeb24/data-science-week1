@@ -184,7 +184,7 @@ CONNECTING TO MY DATA:
 TUTORIAL 5: NUMERIC & CROSS-VARIABLE CONSISTENCY - APPLICATION CHECKLIST
 ================================================================================
 
-[ ] I completed the tutorial exercises
+[/] I completed the tutorial exercises
 
 
 PART A: NUMERIC PLAUSIBILITY
@@ -192,20 +192,20 @@ PART A: NUMERIC PLAUSIBILITY
 
 1. Did I identify any numeric plausibility questions in my Week 1 questions list?
 
-   [ ] YES - Question #(s): ___________
+   [/] YES - Question #(s): ___________
    [ ] NO - Skip to Part B
 
 
 2. If YES, which numeric variable looks suspicious?
 
-   Variable name: ___________
+   Variable name: body mass
    
-   Minimum value: _____  | Is this biologically possible? [ ] Yes [ ] No [ ] Unsure
-   Maximum value: _____  | Is this biologically possible? [ ] Yes [ ] No [ ] Unsure
+   Minimum value: -93.0  | Is this biologically possible? [ ] Yes [/] No [ ] Unsure
+   Maximum value: 109  | Is this biologically possible? [/] Yes [ ] No [ ] Unsure
    
 
    Why do these look wrong?
-   [ ] Negative value (impossible for this measurement)
+   [/] Negative value (impossible for this measurement)
    [ ] Zero (should be NA instead)
    [ ] Too large (exceeds known biological maximum)
    [ ] Too small (below known biological minimum)
@@ -220,7 +220,7 @@ PART B: CROSS-VARIABLE CONSISTENCY
 4. Did I identify any cross-variable questions in my Week 1 questions list?
 
    [ ] YES - Question #(s): ___________
-   [ ] NO - But I'll check anyway
+   [/] NO - But I'll check anyway
 
 
 5. Choose TWO variables that should be related (e.g., body length and body mass,
@@ -244,13 +244,12 @@ PART B: CROSS-VARIABLE CONSISTENCY
 
    If these variables are inconsistent, what should I do?
    [ ] Remove the observations
-   [ ] Convert one variable to NA (which one? _________)
-   [ ] Flag for review but keep both
-   [ ] Query the data collector
+   [/] Convert one variable to NA (which one? if it should be NA instead of 0 e.g body mass)
+   [/] Flag for review but keep both
+   [/] Query the data collector
    [ ] Other: ___________
    
-   Justification:
+   Justification: Validity and Data Preservation, by converting only the specific impossible value to NA, you retain the row and a physically impossible value will not skew any descriptive statistics like regression models.
    
-
 
 ================================================================================
