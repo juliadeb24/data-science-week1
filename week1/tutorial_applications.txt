@@ -118,7 +118,7 @@ Copy this into week1/tutorial_applications.txt and complete it:
 TUTORIAL 3: CHECKING MISSING DATA PATTERNS - APPLICATION CHECKLIST
 ================================================================================
 
-[ ] I completed the tutorial exercises
+[/] I completed the tutorial exercises
 
 
 CONNECTING TO MY DATA:
@@ -126,25 +126,26 @@ CONNECTING TO MY DATA:
 
 1. Did I identify any missing data questions in my Week 1 questions list?
 
-   [ ] YES - Question #(s): ___________
+   [/] YES - Question #(s): just when viewing data, noticed missing values 
    [ ] NO - But I'll check anyway (missing data is common)
 
 
 2. Which variables have the most missing data?
 
-   Variable: ___________ | Percent missing: _____%
-   Variable: ___________ | Percent missing: _____%
-   Variable: ___________ | Percent missing: _____%
+   Variable: eggs_hatched | Percent missing: 8.29%
+   Variable: eggs_laid | Percent missing: 7.80%
+   Variable: body_mass_mg | Percent missing: 6.34%
 
 
 3. Missingness types checklist
 
 
-   [ ] MCAR (Missing Completely At Random) - appears random/scattered
-   [ ] MAR (Missing At Random) - related to other observed variables
-   [ ] MNAR (Missing Not At Random) - related to the missing value itself
+   [/] MCAR (Missing Completely At Random) - appears random/scattered
+   [/] MAR (Missing At Random) - related to other observed variables
+   [/] MNAR (Missing Not At Random) - related to the missing value itself
 
 Why is it important to know what type of missing data we have? 
+Since it affects the result of all the calculations and also any analysis, we need to know the type of missing data to avoid any biases, prevent any data to be lost, ensure model validity and select the right solution as to how to handle missing data in calculations and analysies.
 
 ================================================================================
 2.2.4 Checking duplicates

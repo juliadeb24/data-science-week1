@@ -150,9 +150,67 @@ penguins_clean_names |>
     n_distinct(individual_id)
   )
 
+#=============================================================================================================================================================
 
+#Chapter 5 - Missing Data
 
+#Find Missing values
+#using summary
+summary(penguins_clean_names)
+#using skim 
+library(skimr)
+skimr::skim(penguins_clean_names)
+#using vis_miss
+library(naniar)
+naniar::vis_miss(penguins_clean_names)
+#using upset_plot 
+naniar::gg_miss_upset(penguins_clean_names)
+#Return all rows with a missing value
+penguins_clean_names |> 
+  filter(if_any(everything(), is.na)) |>
+  select(culmen_length_mm, culmen_depth_mm, flipper_length_mm, 
+         sex, delta_15_n_o_oo, delta_13_c_o_oo,comments,
+         everything()) # reorder columns
+#or specify specific columns NA:
+penguins_clean_names |> 
+  filter(if_any(culmen_length_mm, is.na))  # reorder columns
 
+#Remove missing values 
+#3 main stategies:
+#1.Drop all rows with any NA (drop_na()): simple but can remove lots
+#2.Drop NAs in specific columns only.
+#3.Keep rows, use na.rm = TRUE inside summary functions (least destructive)
+
+#1.drop_na() on everything
+#Using drop_na() to remove rows that contain any missing values across all variables
+penguins_clean_names |> 
+  drop_na()
+#Pros - simple, all-in-one solution for datasets where missing values are widespread and problematic
+#Cons - may remove entire rows of data, significant data loss if many rows have missing values in non-critical variables
+
+#2.drop_na() on particular variable
+#Choose a varible such as body_mass_g
+penguins_clean_names |> drop_na(body_mass_g)
+#Pros - retain more data since only remove rows with missing values in the columns that matter for current analysis
+#Cons - if you overwrite permanently - can't recover dropped rows without reloading data
+
+#3.using arguments inside functions
+#more causious approach using the na.rm = TRUE argument
+#summary functions (like mean(), median(), or sum()) include this argument, which, when set to TRUE, excludes NA values from the calculation.
+#keep missing values in dataset but ignore only when performing calculations
+penguins_clean_names |> 
+  group_by(species) |> 
+  summarise(
+    mean_body_mass = mean(body_mass_g, na.rm = T)
+  )
+#Pros - least destructive - handle missing data without removing any rows from the dataset - only exclude NA values during calculations
+#Cons - doesn't remove missing data - you need to ensure that they won’t cause issues later in other analyses (e.g., regressions or visualizations)
+
+#To calculate percentage of missing values in each varaible
+library(naniar)
+miss_var_summary(mosquito_egg_raw)
+
+#=============================================================================================================================================================
 
 
 
