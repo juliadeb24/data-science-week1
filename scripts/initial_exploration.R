@@ -129,7 +129,7 @@ mosquito_egg_raw |>
 # 12 medium_dose
 
 # Fix it:
-mosquito_egg_raw_cleaned <- mosquito_egg_raw |>
+mosquito_egg_raw_cleaned <- mosquito_egg_raw_cleaned |>
   mutate(treatment = case_when(
     treatment %in% c("CONTROL" , "Control") ~ "control",  #%in% for vectors to be used to convert
     treatment  %in% c("High_dose", "HIGH_DOSE") ~ "high_dose", 
@@ -171,7 +171,7 @@ mosquito_egg_raw |>
 # 12 medium_dose
 
 # Fix it:
-mosquito_egg_raw_cleaned <- mosquito_egg_raw |>
+mosquito_egg_raw_cleaned <- mosquito_egg_raw_cleaned |>
   mutate(treatment = case_when(
     treatment %in% c("CONTROL" , "Control") ~ "control",  #%in% for vectors to be used to convert
     treatment  %in% c("High_dose", "HIGH_DOSE") ~ "high_dose", 
@@ -192,5 +192,45 @@ mosquito_egg_raw_cleaned |>
 # It changed because a vector was created containing all the variables which then converted each case into 
 # the desired syntax. %in% was need to read the vector. This is important as otherwise when using the variable
 # of treatment, there would be 12 categories instead of 4.
+
+# FIX 4: Standardize Category Values - Site  ================================================================================ 
+
+# Show the problem:
+mosquito_egg_raw |>
+  distinct(site)
+# There a multiple different cases for the variables within site
+# 1 Site_C
+# 2 Site B
+# 3 Site_A
+# 4 Site_B
+# 5 site_a
+# 6 Site-C
+# 7 site_c
+# 8 site_b
+# 9 Site C
+# 10 Site-A
+# 11 Site A
+# 12 Site-B
+
+# Fix it:
+mosquito_egg_raw_cleaned <- mosquito_egg_raw_cleaned |>
+  mutate(site = case_when(
+    site %in% c("Site_C" , "Site-C", "site_c", "Site C") ~ "site_c",  #%in% for vectors to be used to convert
+    site  %in% c("Site B", "Site_B", "site_b", "Site-B") ~ "site_b", 
+    site  %in% c("Site_A", "site_a", "Site-A", "Site A") ~ "site_a", 
+    .default = as.character(site)
+  ))
+
+# Verify it worked:
+mosquito_egg_raw_cleaned |>
+  distinct(site)
+# 1 site_c
+# 2 site_b
+# 3 site_a
+
+# What changed and why it matters:
+# It changed because a vector was created containing all the variables which then converted each case into 
+# the desired syntax. %in% was need to read the vector. This is important as otherwise when using the variable
+# of site, there would be 12 categories instead of 3.
 
 
