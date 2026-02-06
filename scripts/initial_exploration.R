@@ -109,3 +109,88 @@ View(mosquito_egg_raw_cleaned)
 # What changed and why it matters:
 #Dropped NA values for body mass, number of eggs laid and hatched. 
 
+# FIX 3: Standardize Category Values - Treatment  ================================================================================ 
+
+# Show the problem:
+mosquito_egg_raw |>
+  distinct(treatment)
+# There a multiple different cases for the variables within treatment.
+# 1 Medium_dose
+# 2 High_dose  
+# 3 high_dose  
+# 4 Low_dose   
+# 5 Control    
+# 6 HIGH_DOSE  
+# 7 MEDIUM_DOSE
+# 8 low_dose   
+# 9 control    
+# 10 LOW_DOSE   
+# 11 CONTROL    
+# 12 medium_dose
+
+# Fix it:
+mosquito_egg_raw_cleaned <- mosquito_egg_raw |>
+  mutate(treatment = case_when(
+    treatment %in% c("CONTROL" , "Control") ~ "control",  #%in% for vectors to be used to convert
+    treatment  %in% c("High_dose", "HIGH_DOSE") ~ "high_dose", 
+    treatment  %in% c("Low_dose", "LOW_DOSE") ~ "low_dose", 
+    treatment  %in% c("Medium_dose", "MEDIUM_DOSE") ~ "medium_dose",
+    .default = as.character(treatment)
+  ))
+
+# Verify it worked:
+mosquito_egg_raw_cleaned |>
+  distinct(treatment)
+# 1 medium_dose
+# 2 high_dose  
+# 3 low_dose   
+# 4 control
+
+# What changed and why it matters:
+# It changed because a vector was created containing all the variables which then converted each case into 
+# the desired syntax. %in% was need to read the vector. This is important as otherwise when using the variable
+# of treatment, there would be 12 categories instead of 4.
+
+# FIX 3: Standardize Category Values - Treatment  ================================================================================ 
+
+# Show the problem:
+mosquito_egg_raw |>
+  distinct(treatment)
+# There a multiple different cases for the variables within treatment.
+# 1 Medium_dose
+# 2 High_dose  
+# 3 high_dose  
+# 4 Low_dose   
+# 5 Control    
+# 6 HIGH_DOSE  
+# 7 MEDIUM_DOSE
+# 8 low_dose   
+# 9 control    
+# 10 LOW_DOSE   
+# 11 CONTROL    
+# 12 medium_dose
+
+# Fix it:
+mosquito_egg_raw_cleaned <- mosquito_egg_raw |>
+  mutate(treatment = case_when(
+    treatment %in% c("CONTROL" , "Control") ~ "control",  #%in% for vectors to be used to convert
+    treatment  %in% c("High_dose", "HIGH_DOSE") ~ "high_dose", 
+    treatment  %in% c("Low_dose", "LOW_DOSE") ~ "low_dose", 
+    treatment  %in% c("Medium_dose", "MEDIUM_DOSE") ~ "medium_dose",
+    .default = as.character(treatment)
+  ))
+
+# Verify it worked:
+mosquito_egg_raw_cleaned |>
+  distinct(treatment)
+# 1 medium_dose
+# 2 high_dose  
+# 3 low_dose   
+# 4 control
+
+# What changed and why it matters:
+# It changed because a vector was created containing all the variables which then converted each case into 
+# the desired syntax. %in% was need to read the vector. This is important as otherwise when using the variable
+# of treatment, there would be 12 categories instead of 4.
+
+
