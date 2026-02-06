@@ -1,0 +1,5 @@
+Questions 
+1. Fix inconsistencies of cataegory names in treatment and site
+2. Dates are consistent but change it to DD-MM-YYYY from YYYY-MM-DD
+3. Deal with the missing data 
+4. Remove impossible values - e.g negative body mass 
