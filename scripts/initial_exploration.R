@@ -44,3 +44,40 @@ mosquito_egg_raw |>
 #   Also an inconsistency in naming of sites: Site_A , site a 
 #   Missing data - decide whether to include those sets of data or not to include it 
 #   Impossible data value: body mass being a negative value - possibly a typing error
+
+# FIX 1: Negative Body Mass Values =================================================================================
+
+# Show the problem:
+summary(mosquito_egg_raw$body_mass_mg)
+#The minimum value is a negative value which is biologically impossible. This will affect any analysis and skew any results. 
+
+# Fix it:
+mosquito_egg_raw |> mutate(body_mass_mg = abs(body_mass_mg)) -> mosquito_egg_raw_cleaned  
+#Used absolute to change all negative values to positive values
+
+# Verify it worked:
+summary(mosquito_egg_raw_cleaned$body_mass_mg)
+#Minimum value no longer negative
+
+# What changed and why it matters:
+#Now all values in body mass is positive, which means that its biologically plausible.
+
+
+# FIX 2: Missing Data Values  ==============================================================================
+
+# Show the problem:
+# [Code]
+
+# Fix it:
+mosquito_egg_data_step2 <- mosquito_egg_data_step1 |>
+  # YOUR CODE
+  
+  
+  # Verify it worked:
+  # [Code]
+  
+  # What changed and why it matters:
+  # [2-3 sentences]
+  #
+
+
