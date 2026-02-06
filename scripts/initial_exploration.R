@@ -66,18 +66,46 @@ summary(mosquito_egg_raw_cleaned$body_mass_mg)
 # FIX 2: Missing Data Values  ==============================================================================
 
 # Show the problem:
-# [Code]
+mosquito_egg_raw |> 
+  filter(if_any(everything(), is.na)) |>
+  select(female_id, age_days, body_mass_mg, 
+         site, collection_date, collector,treatment,eggs_laid, eggs_hatched,
+         everything())
+
+mosquito_egg_raw |> 
+  filter(if_any(body_mass_mg, is.na))
+#15 missing body mass data
+
+mosquito_egg_raw |> 
+  filter(if_any(collector, is.na))
+#13 missing collector data
+#Collector information does not effect any analysis or results - can leave this data as NA 
+
+mosquito_egg_raw |> 
+  filter(if_any(eggs_laid, is.na))
+#16 missing number of eggs laid data
+
+mosquito_egg_raw |> 
+  filter(if_any(eggs_hatched, is.na))
+#17 missing number of eggs hatched data
 
 # Fix it:
-mosquito_egg_data_step2 <- mosquito_egg_data_step1 |>
-  # YOUR CODE
-  
-  
-  # Verify it worked:
-  # [Code]
-  
-  # What changed and why it matters:
-  # [2-3 sentences]
-  #
+library(tidyr)
 
+mosquito_egg_raw_cleaned <- mosquito_egg_raw |> 
+  drop_na(eggs_laid) |> 
+  drop_na(eggs_hatched) |> 
+  drop_na(body_mass_mg) 
+  
+
+# Verify it worked:
+mosquito_egg_raw_cleaned |> 
+  filter(if_any(everything(), is.na)) |>
+  select(body_mass_mg, eggs_laid, eggs_hatched,
+         everything())
+
+View(mosquito_egg_raw_cleaned)
+
+# What changed and why it matters:
+#Dropped NA values for body mass, number of eggs laid and hatched. 
 
