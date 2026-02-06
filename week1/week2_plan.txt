@@ -1,0 +1,53 @@
+WEEK 2 CLEANING PLAN
+====================
+Name: Julia Deb
+Date: 05/02/2026
+
+I've completed all 5 tutorials and application checklists.
+
+Looking across all my checklists, these are the 2 most important issues 
+to address in Week 2:
+
+
+ISSUE 1 
+-------------------------
+Brief description: There are biologically impossible values in body mass, it is impossible to have negative mass.
+
+Which tutorial provides the solution: TUTORIAL 5: NUMERIC & CROSS-VARIABLE CONSISTENCY
+
+Which variable(s) affected: body mass
+
+Why this is important to fix: Biological reason
+
+What I plan to do: Replace with NA
+
+
+
+ISSUE 2 
+--------------------------------
+Brief description: There is inconsistency in the catagory names in both treatment and site.
+
+Which tutorial provides the solution: TUTORIAL 1: CHECKING STRINGS
+
+Which variable(s) affected: treatment and site
+
+Why this is important to fix: Analytical reason
+
+What I plan to do: Could try use if_else() or case_when()
+
+
+
+OTHER ISSUES I NOTICED (but won't fix in Week 2)
+-------------------------------------------------
+- Missing data values
+- Change date format
+
+QUESTIONS TO DISCUSS IN WEEK 2
+-------------------------------
+Things I'm still unsure about:
+
+1. Understand how lubridate works and how to change date format from YMD to DMY 
+
+2. How to flag suspicious data more effectively 
+
+3. 
